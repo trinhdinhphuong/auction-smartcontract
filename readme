@@ -1,0 +1,9 @@
+migrate --reset
+npm install -g ganache-cli
+npm install --save solc ganache-cli web3 mocha
+
+truffle compile
+truffle migrate
+truffle develop
+truffle test
+
