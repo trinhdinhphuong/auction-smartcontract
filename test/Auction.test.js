@@ -26,13 +26,13 @@ describe('Auction', () => {
     auctionSeller = await auction.methods.seller().call();
     assert.equal(auctionSeller, seller, "The seller is the one who called the auction method.");
     auctionBid = await auction.methods.latestBid().call();
-    assert.equal(auctionBid, web3.utils.toWei('0.01', 'ether'), "The latest bid is the argument sent to auction method converted into wei.");
+    assert.equal(auctionBid, web3.utils.toWei('2', 'ether'), "The latest bid is the argument sent to auction method converted into wei.");
   });
   it('bids the item', async () => {
     bidder = accounts[2];
     await auction.methods.bid().send({ from: bidder, value: web3.utils.toWei('3', 'ether') });
     auctionBid = await auction.methods.latestBid().call();
-    assert.equal(auctionBid, web3.utils.toWei('0.03', 'ether'), "The latest bid is the payment sent to bid method converted into wei.");
+    assert.equal(auctionBid, web3.utils.toWei('3', 'ether'), "The latest bid is the payment sent to bid method converted into wei.");
   });
   it('must bid above the latest bid amount', async () => {
     bidder = accounts[2];
